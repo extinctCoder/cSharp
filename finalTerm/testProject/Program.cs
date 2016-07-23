@@ -10,6 +10,7 @@ namespace testProject
     {
         static void Main(string[] args)
         {
+            testClass t = new testClass();
         }
     }
 }
