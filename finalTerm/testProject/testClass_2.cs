@@ -6,12 +6,16 @@ using System.Threading.Tasks;
 
 namespace testProject
 {
-    class Program
+    class testClass_2
     {
-        static void Main(string[] args)
+        int veriable_1;
+        public testClass_2()
         {
-            testClass t = new testClass();
-            testClass_2 t2 = new testClass_2();
+
+        }
+        public testClass_2(int veriable_1)
+        {
+            this.veriable_1 = veriable_1;
         }
     }
 }
