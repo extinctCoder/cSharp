@@ -1,0 +1,15 @@
+﻿<Window x:Class="newCalculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:newCalculator"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBox x:Name="number_1_txt" HorizontalAlignment="Left" Height="23" Margin="162,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="number_1" />
+        <TextBox x:Name="number_2_txt" HorizontalAlignment="Left" Height="23" Margin="162,105,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" ToolTip="number_2" />
+        <Button x:Name="add_btn" Content="add" HorizontalAlignment="Left" Margin="162,133,0,0" VerticalAlignment="Top" Width="120" Click="add_btn_Click" />
+        <TextBox x:Name="result_txt" HorizontalAlignment="Left" Height="23" Margin="162,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsEnabled="False" ToolTip="result" />
+    </Grid>
+</Window>

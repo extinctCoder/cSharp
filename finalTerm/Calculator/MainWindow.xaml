@@ -1,0 +1,22 @@
+﻿<Window x:Class="Calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator"
+        mc:Ignorable="d"
+        Title="Claculator" Height="178" Width="253">
+    <Grid>
+        <Label x:Name="number_1" Content="number_1 : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" />
+        <Label x:Name="number_2" Content="number_2 : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,36,0,0" />
+        <Label x:Name="result" Content="result : " HorizontalAlignment="Left" Margin="20,62,0,0" VerticalAlignment="Top" />
+        <TextBox x:Name="number_1_data" HorizontalAlignment="Left" Height="23" Margin="82,13,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" KeyDown="number_1_data_KeyDown" />
+        <TextBox x:Name="number_2_data" HorizontalAlignment="Left" Height="23" Margin="82,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" />
+        <TextBox x:Name="result_data" HorizontalAlignment="Left" Height="23" Margin="82,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="155" Cursor="No" Background="White" IsEnabled="False" />
+        <Button x:Name="add_button" Content="add" HorizontalAlignment="Left" Margin="0,93,0,0" VerticalAlignment="Top" Width="75" Click="add_button_Click" />
+        <Button x:Name="sub_button" Content="sub" HorizontalAlignment="Left" Margin="82,94,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.493,0.15" Click="sub_button_Click" />
+        <Button x:Name="mul_button" Content="multi" HorizontalAlignment="Left" Margin="162,93,0,0" VerticalAlignment="Top" Width="75" Click="mul_button_Click" />
+        <Button x:Name="div_button" Content="div" HorizontalAlignment="Left" Margin="0,118,0,0" VerticalAlignment="Top" Width="75" Click="div_button_Click" />
+        <Button x:Name="x2y_button" Content="XtoY" HorizontalAlignment="Left" Margin="162,118,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="x2y_button_Click" />
+    </Grid>
+</Window>

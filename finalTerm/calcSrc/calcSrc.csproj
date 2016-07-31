@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E0A5AD66-0A08-4CEB-A1D2-5180761F75C5}</ProjectGuid>
+    <ProjectGuid>{F5341764-F811-4E80-AF8B-D30BB1E7F003}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>testProject</RootNamespace>
-    <AssemblyName>testProject</AssemblyName>
+    <RootNamespace>calcSrc</RootNamespace>
+    <AssemblyName>calcSrc</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BasicCalculator.cs" />
+    <Compile Include="IBasicCalculator.cs" />
+    <Compile Include="IScientificCalculator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="testClass.cs" />
+    <Compile Include="ScientificCalculator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
