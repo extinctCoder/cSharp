@@ -253,60 +253,15 @@ namespace BankManagementUser
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
                     break;
 
-                case ButtonStatus.INVALID:
-                    break;
-
                 case ButtonStatus.btn_11_1:
                     this.buttonStatus = ButtonStatus.btn_11_1;
                     this.booth_main_screen.optional_console.Text = "please try again";
                     this.booth_main_screen.main_console.Clear();
                     break;
 
-                case ButtonStatus.btn_11_2:
-                    break;
-
-                case ButtonStatus.btn_11_3:
-                    break;
-
-                case ButtonStatus.btn_11_4:
-                    break;
-
                 case ButtonStatus.btn_31_1:
                     this.booth_main_screen_default_Loader();
                     this.booth_main_screen.optional_console.Text = "your current balance is : " + Convert.ToString(this.tempUser.Balance);
-                    break;
-
-                case ButtonStatus.btn_31_2:
-                    break;
-
-                case ButtonStatus.btn_31_3:
-                    break;
-
-                case ButtonStatus.btn_31_4:
-                    break;
-
-                case ButtonStatus.btn_51_1:
-                    break;
-
-                case ButtonStatus.btn_51_2:
-                    break;
-
-                case ButtonStatus.btn_51_3:
-                    break;
-
-                case ButtonStatus.btn_51_4:
-                    break;
-
-                case ButtonStatus.btn_71_1:
-                    break;
-
-                case ButtonStatus.btn_71_2:
-                    break;
-
-                case ButtonStatus.btn_71_3:
-                    break;
-
-                case ButtonStatus.btn_71_4:
                     break;
 
                 case ButtonStatus.btn_17_2:
@@ -315,48 +270,6 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.Clear();
                     this.booth_main_screen_lbl_loader("500", "10000", "1000", "clear", "2000", "withdraw with print", "5000", "withdraw without print");
                     this.booth_main_screen_btn_loader(true, true, true, false, true, false, true, false);
-                    break;
-
-                case ButtonStatus.btn_17_3:
-                    break;
-
-                case ButtonStatus.btn_17_4:
-                    break;
-
-                case ButtonStatus.btn_37_1:
-                    break;
-
-                case ButtonStatus.btn_37_2:
-                    break;
-
-                case ButtonStatus.btn_37_3:
-                    break;
-
-                case ButtonStatus.btn_37_4:
-                    break;
-
-                case ButtonStatus.btn_57_1:
-                    break;
-
-                case ButtonStatus.btn_57_2:
-                    break;
-
-                case ButtonStatus.btn_57_3:
-                    break;
-
-                case ButtonStatus.btn_57_4:
-                    break;
-
-                case ButtonStatus.btn_77_1:
-                    break;
-
-                case ButtonStatus.btn_77_2:
-                    break;
-
-                case ButtonStatus.btn_77_3:
-                    break;
-
-                case ButtonStatus.btn_77_4:
                     break;
 
                 default:
@@ -486,9 +399,6 @@ namespace BankManagementUser
             {
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
-                    break;
-
-                case ButtonStatus.INVALID:
                     break;
 
                 case ButtonStatus.btn_17_1:
