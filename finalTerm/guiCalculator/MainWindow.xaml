@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:guiCalculator"
         mc:Ignorable="d"
-        Title="guiCalculator" Height="240" Width="360" ResizeMode="NoResize">
-    <Grid Margin="0,-2,2,0">
-        <TextBox x:Name="mainWindow" HorizontalAlignment="Left" Height="23" Margin="10,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="315" TextAlignment="Right" IsEnabled="False" FontFamily="Magneto" KeyUp="mainWindow_KeyUp" />
+        Title="guiCalculator" Height="240" Width="355" ResizeMode="NoResize">
+    <Grid Margin="0,-2,7,0" HorizontalAlignment="Center">
+        <TextBox x:Name="mainWindow" HorizontalAlignment="Left" Height="23" Margin="10,23,0,0" VerticalAlignment="Top" Width="315" TextAlignment="Right" KeyUp="mainWindow_KeyUp" Cursor="IBeam" />
         <Button x:Name="CE_btn" Content="CE" HorizontalAlignment="Left" Margin="10,51,0,0" VerticalAlignment="Top" Width="75" Click="CE_btn_Click" />
         <Button x:Name="C_btn" Content="C" HorizontalAlignment="Left" Margin="90,51,0,0" VerticalAlignment="Top" Width="75" Click="C_btn_Click" />
         <Button x:Name="DEL_btn" Content="DEL" HorizontalAlignment="Left" Margin="170,51,0,0" VerticalAlignment="Top" Width="75" Click="DEL_btn_Click" />
@@ -28,6 +28,6 @@
         <Button x:Name="ZERO_btn" Content="0" HorizontalAlignment="Left" Margin="90,151,0,0" VerticalAlignment="Top" Width="75" Click="ZERO_btn_Click" />
         <Button x:Name="DOT_btn" Content="." HorizontalAlignment="Left" Margin="170,151,0,0" VerticalAlignment="Top" Width="75" Click="DOT_btn_Click" />
         <Button x:Name="EQUAL_btn" Content="=" HorizontalAlignment="Left" Margin="250,151,0,0" VerticalAlignment="Top" Width="75" Click="EQUAL_btn_Click" />
-        <TextBox x:Name="optionalCommand" HorizontalAlignment="Center" Height="23" Margin="10,176,18,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="314" />
+        <TextBox x:Name="optionalCommand" HorizontalAlignment="Center" Height="23" Margin="10,176,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="322" TextAlignment="Center" />
     </Grid>
 </Window>

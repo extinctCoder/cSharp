@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="BankManagementUser.UserAuthentication"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BankManagementUser"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="5"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="100"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="5"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="username_lbl" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                <Label x:Name="password_lbl" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+                <TextBox x:Name="username_txt" Grid.Row="3" Grid.Column="1"></TextBox>
+                <PasswordBox x:Name="password_txt" Grid.Row="3" Grid.Column="3"></PasswordBox>
+                <Button x:Name="login_btn" Grid.Row="3" Grid.Column="5" Click="login_btn_Click"></Button>
+            </Grid>
+            <Label x:Name="wellcom_gettings_txt" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+        </StackPanel>
+    </Grid>
+</UserControl>

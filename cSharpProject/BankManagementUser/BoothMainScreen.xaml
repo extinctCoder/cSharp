@@ -1,0 +1,58 @@
+﻿<UserControl x:Class="BankManagementUser.BoothMainScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BankManagementUser"
+             mc:Ignorable="d">
+
+    <StackPanel>
+        <TextBox x:Name="main_console" Height="35" Width="400" FontSize="25" TextAlignment="Center" Cursor="IBeam"  ToolTip="main console" />
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="5"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="20"></ColumnDefinition>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="btn_11" Grid.Row="1" Grid.Column="1" Click="btn_11_Click" ></Button>
+            <Button x:Name="btn_31" Grid.Row="3" Grid.Column="1" Click="btn_31_Click" ></Button>
+            <Button x:Name="btn_51" Grid.Row="5" Grid.Column="1" Click="btn_51_Click" ></Button>
+            <Button x:Name="btn_71" Grid.Row="7" Grid.Column="1" Click="btn_71_Click" ></Button>
+            <Label x:Name="lbl_11" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_31" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_51" Grid.Row="5" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_71" Grid.Row="7" Grid.Column="3" HorizontalAlignment="Left" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_15" Grid.Row="1" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_35" Grid.Row="3" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_55" Grid.Row="5" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label x:Name="lbl_75" Grid.Row="7" Grid.Column="5" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Button x:Name="btn_17" Grid.Row="1" Grid.Column="7" Click="btn_17_Click" ></Button>
+            <Button x:Name="btn_37" Grid.Row="3" Grid.Column="7" Click="btn_37_Click" ></Button>
+            <Button x:Name="btn_57" Grid.Row="5" Grid.Column="7" Click="btn_57_Click" ></Button>
+            <Button x:Name="btn_77" Grid.Row="7" Grid.Column="7" Click="btn_77_Click" ></Button>
+        </Grid>
+        <TextBlock x:Name="optional_console" TextAlignment="Center"></TextBlock>
+        <DockPanel HorizontalAlignment="Right" VerticalAlignment="Center">
+            <Label x:Name="booth_main_screen_gettings" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Label x:Name="booth_main_screen_username" HorizontalAlignment="Right" VerticalAlignment="Center"></Label>
+            <Button x:Name="logout_btn" HorizontalAlignment="Right" VerticalAlignment="Center" Click="logout_btn_Click"></Button>
+        </DockPanel>
+    </StackPanel>
+</UserControl>
