@@ -6,8 +6,15 @@
         xmlns:local="clr-namespace:BankManagementUser"
         mc:Ignorable="d"
         Title="BANK LTD." Height="350" Width="525">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <local:UserAuthentication x:Name="user_authentication" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="user_authentication_Loaded" ></local:UserAuthentication>
-        <local:BoothMainScreen x:Name="booth_main_screen" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="booth_main_screen_Loaded"></local:BoothMainScreen>
-    </Grid>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+            <local:UserAuthentication x:Name="user_authentication" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="user_authentication_Loaded" ></local:UserAuthentication>
+            <local:BoothMainScreen x:Name="booth_main_screen" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="booth_main_screen_Loaded"></local:BoothMainScreen>
+        </Grid>
+        <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Label HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="Database status :"></Label>
+            <Label x:Name="database_status" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="undefined " ></Label>
+            <Button x:Name="databse_reload_btn" HorizontalAlignment="Right" VerticalAlignment="Bottom" Content="RELOAD" Click="databse_reload_btn_Click"></Button>
+        </WrapPanel>
+    </StackPanel>
 </Window>

@@ -1,0 +1,63 @@
+﻿<UserControl x:Class="BankManagementGui.ManagerPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BankManagementGui"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="220"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl x:Name="tabControl" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem x:Name="client_lst" Header="Client List" Loaded="client_lst_Loaded">
+                <DataGrid x:Name="client_list_tbl" AutoGenerateColumns="False" ItemsSource="{Binding Path=ClientDataBinding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="userId" Binding="{Binding Path=userId}" Width="*" />
+                        <DataGridTextColumn Header="firstName" Binding="{Binding Path=firstName}" Width="*" />
+                        <DataGridTextColumn Header="middleName" Binding="{Binding Path=middleName}" Width="*" />
+                        <DataGridTextColumn Header="lastName" Binding="{Binding Path=lastName}" Width="*" />
+                        <DataGridTextColumn Header="accountType" Binding="{Binding Path=accountType}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="transaction_tbl" Header="Transaction Log" Loaded="transaction_tbl_Loaded">
+                <DataGrid x:Name="transaction_log_tbl" AutoGenerateColumns="False" ItemsSource="{Binding Path=TransactionDataBinding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="userId" Binding="{Binding Path=userId}" Width="*" />
+                        <DataGridTextColumn Header="transactionType" Binding="{Binding Path=transactionType}" Width="*" />
+                        <DataGridTextColumn Header="balance" Binding="{Binding Path=Amount}" Width="*" />
+                        <DataGridTextColumn Header="employeeId" Binding="{Binding Path=employeeId}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+            <TabItem x:Name="employee_lst" Header="Employee List" Loaded="employee_lst_Loaded">
+                <DataGrid x:Name="employee_lst_tbl" AutoGenerateColumns="False" ItemsSource="{Binding Path=EmployeeDataBinding}">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="employeeId" Binding="{Binding Path=employeeId}" Width="*" />
+                        <DataGridTextColumn Header="name" Binding="{Binding Path=employeeName}" Width="*" />
+                        <DataGridTextColumn Header="accessPermission" Binding="{Binding Path=accesPermission}" Width="*" />
+                        <DataGridTextColumn Header="salary" Binding="{Binding Path=salary}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome back to manager panel."></Label>
+            <Label Content="search"></Label>
+            <TextBox x:Name="serch_txt" TextChanged="TxtSearchText_TextChanged"></TextBox>
+            <Button x:Name="search_btn" HorizontalAlignment="Right" Width="60" Content="search" Click="search_btn_Click"></Button>
+            <Button x:Name="reloadButton" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="RELOAD" Click="reloadButton_Click" ></Button>
+            <Button x:Name="logout_button" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Content="Logout" Click="logout_button_Click" ></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

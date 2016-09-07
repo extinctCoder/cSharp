@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="BankManagementGui.casherPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BankManagementGui"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem x:Name="deposit" Header="Deposit Money" Loaded="deposit_Loaded">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Account Number : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="deposit_user_id" Grid.Column="3" Grid.Row="1" KeyUp="deposit_user_id_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="deposit_search_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Search Account" Width="200" Height="25" Click="deposit_search_btn_Click"></Button>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Current Balance : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="1" Grid.Row="3" Content="Balance To Deposit : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="deposit_current_balance_txt" Grid.Column="3" Grid.Row="1" IsEnabled="False"></TextBox>
+                        <TextBox x:Name="deposit_balance_txt" Grid.Column="3" Grid.Row="3" KeyUp="deposit_balance_txt_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="deposit_confirm_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Confirm" Width="200" Height="25" Click="deposit_confirm_btn_Click"></Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="withdraw" Header="Withdraw Money" Loaded="withdraw_Loaded">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Account Number : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="withdraw_user_id" Grid.Column="3" Grid.Row="1" KeyUp="withdraw_user_id_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="withdraw_search_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Search Account" Width="200" Height="25" Click="withdraw_search_btn_Click"></Button>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="220"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Balance Remain : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="1" Grid.Row="3" Content="Balance To Withdraw : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="withdraw_current_balance_txt" Grid.Column="3" Grid.Row="1" IsEnabled="False"></TextBox>
+                        <TextBox x:Name="withdraw_balance_txt" Grid.Column="3" Grid.Row="3" KeyUp="withdraw_balance_txt_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="withdraw_confirm_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Confirm" Width="200" Height="25" Click="withdraw_confirm_btn_Click"></Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome back to casher panel."></Label>
+            <Button x:Name="logout_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Logout" Click="logout_btn_Click" Width="150"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

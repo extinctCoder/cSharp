@@ -1,0 +1,121 @@
+﻿<UserControl x:Class="BankManagementGui.secondOfficerPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:BankManagementGui"
+             mc:Ignorable="d">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="600"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition Width="5"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="5"></RowDefinition>
+            <RowDefinition Height="500"></RowDefinition>
+            <RowDefinition Height="5"></RowDefinition>
+        </Grid.RowDefinitions>
+        <TabControl Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem x:Name="add_account" Header="Add Account" Loaded="add_account_Loaded">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="20"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="130"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="First Name : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="1" Grid.Row="3" Content="Middle Name : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="1" Grid.Row="5" Content="Last Name : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="5" Grid.Row="1" Content="Account Type : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="5" Grid.Row="3" Content="Gender : " HorizontalContentAlignment="Right"></Label>
+                        <Label Grid.Column="5" Grid.Row="5" Content="Date of birth : " HorizontalContentAlignment="Right"></Label>
+
+                        <TextBox x:Name="first_nam_txt" Grid.Column="3" Grid.Row="1" ></TextBox>
+                        <TextBox x:Name="middle_name_txt" Grid.Column="3" Grid.Row="3"></TextBox>
+                        <TextBox x:Name="last_name_txt" Grid.Column="3" Grid.Row="5"></TextBox>
+                        <ComboBox x:Name="account_type_combo" Grid.Column="7" Grid.Row="1"></ComboBox>
+                        <ComboBox x:Name="gender_combo" Grid.Column="7" Grid.Row="3"></ComboBox>
+                        <DatePicker x:Name="dob_txt" Grid.Column="7" Grid.Row="5"></DatePicker>
+                    </Grid>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Initial Balance : "></Label>
+                        <TextBox x:Name="balance_txt" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="100" KeyUp="balance_txt_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="confirm_btn" Content="CONFIRM AACCOUNT" HorizontalAlignment="Center" VerticalAlignment="Center" Width="200" Height="25" Click="confirm_btn_Click"></Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem x:Name="remove_account" Header="Remove Account" Loaded="remove_account_Loaded">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="220"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="5"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="10"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Account Number : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="remove_user_id" Grid.Column="3" Grid.Row="1" KeyUp="remove_user_id_KeyUp"></TextBox>
+                    </Grid>
+                    <Button x:Name="remove_account_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Search Account" Width="200" Height="25" Click="remove_account_btn_Click"></Button>
+                    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="100"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="5"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="10"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                            <RowDefinition Height="5"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label Grid.Column="1" Grid.Row="1" Content="Balance Remain : " HorizontalContentAlignment="Right"></Label>
+                        <TextBox x:Name="remove_user_balance_txt" Grid.Column="3" Grid.Row="1" KeyUp="remove_user_id_KeyUp" IsEnabled="False"></TextBox>
+                    </Grid>
+                    <Button x:Name="remove_confirm_account_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Confirm" Width="200" Height="25" Click="remove_confirm_account_btn_Click"></Button>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+        <StackPanel Grid.Column="3" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Label HorizontalAlignment="Center" VerticalAlignment="Center" Content="Welcome back to second officer panel."></Label>
+            <Button x:Name="logout_btn" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Logout" Click="logout_btn_Click" Width="150"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

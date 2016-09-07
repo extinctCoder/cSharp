@@ -13,4 +13,14 @@
         btn_77_1, btn_77_2, btn_77_3, btn_77_4,
         NOT_DEFINED
     }
+
+    public enum AccountType
+    {
+        InValid, Current, Savings
+    }
+
+    public enum Gender
+    {
+        Male, Female, Unknown
+    }
 }

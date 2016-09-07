@@ -5,7 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BankManagementGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-    </Grid>
+
+        Title="Bank LTD." Height="600" Width="900">
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid  x:Name="container" HorizontalAlignment="Center" VerticalAlignment="Center"></Grid>
+    </StackPanel>
 </Window>

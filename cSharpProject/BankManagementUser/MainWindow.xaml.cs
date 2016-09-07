@@ -8,9 +8,8 @@ namespace BankManagementUser
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BankManagementSrc.BankManagementUserSrc tempUser = new BankManagementSrc.BankManagementUserSrc(1, "Sabbir", "Ahmed", "Shourov", "abc", BankManagementSrc.Gender.Unknown, BankManagementSrc.AccountType.InValid, 100000);
         private ButtonStatus buttonStatus = ButtonStatus.NOT_DEFINED;
-        private int reciver;
+        private int reciver = -1;
 
         public MainWindow()
         {
@@ -26,6 +25,7 @@ namespace BankManagementUser
             this.booth_main_screen.btn_71Cmnd += new EventHandler(Booth_main_screen_btn_71Cmnd);
             this.booth_main_screen.btn_77Cmnd += new EventHandler(Booth_main_screen_btn_77Cmnd);
             this.booth_main_screen.boothMainScreenLogoutCmnd += new EventHandler(boothMainScreenLogout);
+            this.databaseOflineMode();
         }
 
         private void userAuthenticationVarificationHundler()
@@ -37,6 +37,13 @@ namespace BankManagementUser
             this.buttonStatus = ButtonStatus.NOT_DEFINED;
             this.booth_main_screen.main_console.Clear();
             this.booth_main_screen.optional_console.Text = "";
+            user_authentication.username_lbl.Content = "USERNAME";
+            user_authentication.password_lbl.Content = "PASSWORD";
+            user_authentication.login_btn.Content = "LOGIN";
+            user_authentication.wellcom_gettings_txt.Content = "please login to access your account ...! :P";
+            this.user_authentication.username_txt.IsEnabled = true;
+            this.user_authentication.password_txt.IsEnabled = true;
+            this.user_authentication.login_btn.IsEnabled = true;
         }
 
         private void boothMainScreenHundler()
@@ -48,7 +55,7 @@ namespace BankManagementUser
             this.buttonStatus = ButtonStatus.NOT_DEFINED;
             this.booth_main_screen.main_console.Clear();
             this.booth_main_screen.optional_console.Text = "";
-            this.booth_main_screen.booth_main_screen_username.Content = tempUser.LastName.ToUpper();
+            this.booth_main_screen.booth_main_screen_username.Content = BankManagementUserSrc.LastName.ToUpper();
         }
 
         private void user_authentication_Loaded(object sender, RoutedEventArgs e)
@@ -57,18 +64,21 @@ namespace BankManagementUser
             user_authentication.password_lbl.Content = "PASSWORD";
             user_authentication.login_btn.Content = "LOGIN";
             user_authentication.wellcom_gettings_txt.Content = "please login to access your account ...! :P";
+            this.databaseOflineMode();
         }
 
         private void booth_main_screen_Loaded(object sender, RoutedEventArgs e)
         {
+            this.databaseOflineMode();
         }
 
         private void userAuthenticationVarification(object sender, EventArgs e)
         {
+            this.userAuthenticationVarificationHundler();
             try
             {
                 int tempUsernameTxt = Convert.ToInt32((this.user_authentication.username_txt.Text));
-                if (tempUser.userAuthentication(tempUsernameTxt, this.user_authentication.password_txt.Password))
+                if (BankManagementUserSrc.userAuthentication(tempUsernameTxt, this.user_authentication.password_txt.Password))
                 {
                     this.boothMainScreenHundler();
                 }
@@ -85,6 +95,7 @@ namespace BankManagementUser
             {
                 this.user_authentication.username_txt.Clear();
                 this.user_authentication.password_txt.Clear();
+                this.databaseOflineMode();
             }
         }
 
@@ -92,6 +103,45 @@ namespace BankManagementUser
         {
             this.userAuthenticationVarificationHundler();
             this.booth_main_screen_default_Loader();
+            this.databaseOflineMode();
+        }
+
+        public void databaseOflineMode()
+        {
+            this.database_status.Content = BankManagementUserSrc.connectionTest();
+            if (!BankManagementUserSrc.ConnectionStatus)
+            {
+                this.boothMainScreenHundler();
+                this.booth_main_screen_default_Loader();
+                this.userAuthenticationVarificationHundler();
+                this.user_authentication.wellcom_gettings_txt.Content = "database is offline ...:(";
+                this.user_authentication.username_txt.IsEnabled = false;
+                this.user_authentication.password_txt.IsEnabled = false;
+                this.user_authentication.login_btn.IsEnabled = false;
+                this.database_status.Content = "offline";
+                this.databse_reload_btn.IsEnabled = true;
+            }
+            else
+            {
+                if (this.user_authentication.username_txt.IsEnabled == false && this.user_authentication.password_txt.IsEnabled == false && this.user_authentication.login_btn.IsEnabled == false)
+                {
+                    this.userAuthenticationVarificationHundler();
+                }
+                this.databse_reload_btn.IsEnabled = false;
+                this.database_status.Content = "online";
+            }
+        }
+
+        private void databse_reload_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (!BankManagementUserSrc.ConnectionStatus)
+            {
+                this.databaseOflineMode();
+            }
+            else
+            {
+                userAuthenticationVarificationHundler();
+            }
         }
     }
 
@@ -134,7 +184,7 @@ namespace BankManagementUser
             this.booth_main_screen.lbl_71.Content = "pre_paid_card";
             this.booth_main_screen.lbl_75.Content = "bills";
             this.booth_main_screen.booth_main_screen_gettings.Content = "Welcome back!";
-            this.booth_main_screen.booth_main_screen_username.Content = this.tempUser.LastName.ToUpper();
+            this.booth_main_screen.booth_main_screen_username.Content = BankManagementUserSrc.LastName.ToUpper();
             this.booth_main_screen.logout_btn.Content = "LOGOUT";
         }
 
@@ -160,6 +210,7 @@ namespace BankManagementUser
             this.booth_main_screen.btn_57.IsEnabled = btn_57;
             this.booth_main_screen.btn_71.IsEnabled = btn_71;
             this.booth_main_screen.btn_77.IsEnabled = btn_77;
+            this.databaseOflineMode();
         }
 
         private void Booth_main_screen_btn_11Cmnd(object sender, EventArgs e)
@@ -169,9 +220,11 @@ namespace BankManagementUser
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen_null_txt_Loader();
                     this.buttonStatus = ButtonStatus.btn_11_1;
+                    this.booth_main_screen.optional_console.Text = "please enter a valid amount";
                     this.booth_main_screen.main_console.IsEnabled = true;
                     this.booth_main_screen_lbl_loader("", "home", "", "clear", "", "withdraw with print", "", "withdraw without print");
                     this.booth_main_screen_btn_loader(false, true, false, true, false, true, false, true);
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_1:
@@ -181,6 +234,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.IsEnabled = false;
                     this.booth_main_screen.main_console.Text = "500";
                     this.booth_main_screen.optional_console.Text = "do you want to withdraw 500 tk.";
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -198,12 +252,14 @@ namespace BankManagementUser
                     this.booth_main_screen_lbl_loader("500", "10000", "1000", "clear", "2000", "withdraw with print", "5000", "withdraw without print");
                     this.booth_main_screen_btn_loader(true, true, true, false, true, false, true, false);
                     this.booth_main_screen.optional_console.Text = "please chose your amount";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_11_1:
 
                     this.booth_main_screen_default_Loader();
                     this.booth_main_screen.optional_console.Text = "please chose another option.";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_1:
@@ -213,6 +269,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.IsEnabled = false;
                     this.booth_main_screen.main_console.Text = "10000";
                     this.booth_main_screen.optional_console.Text = "do you want to withdraw 10000 tk.";
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -229,6 +286,7 @@ namespace BankManagementUser
                     this.booth_main_screen_lbl_loader("", "", "", "check balance", "", "print current balance", "", "print mini statement");
                     this.booth_main_screen_btn_loader(false, false, false, true, false, true, false, true);
                     this.booth_main_screen.optional_console.Text = "please chose a option";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_1:
@@ -238,6 +296,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.IsEnabled = false;
                     this.booth_main_screen.main_console.Text = "1000";
                     this.booth_main_screen.optional_console.Text = "do you want to withdraw 1000 tk.";
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -251,17 +310,20 @@ namespace BankManagementUser
             {
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_11_1:
                     this.buttonStatus = ButtonStatus.btn_11_1;
                     this.booth_main_screen.optional_console.Text = "please try again";
                     this.booth_main_screen.main_console.Clear();
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_31_1:
                     this.booth_main_screen_default_Loader();
-                    this.booth_main_screen.optional_console.Text = "your current balance is : " + Convert.ToString(this.tempUser.Balance);
+                    this.booth_main_screen.optional_console.Text = "your current balance is : " + Convert.ToString(BankManagementUserSrc.Balance);
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_2:
@@ -270,6 +332,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.Clear();
                     this.booth_main_screen_lbl_loader("500", "10000", "1000", "clear", "2000", "withdraw with print", "5000", "withdraw without print");
                     this.booth_main_screen_btn_loader(true, true, true, false, true, false, true, false);
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -288,6 +351,7 @@ namespace BankManagementUser
                     this.booth_main_screen_lbl_loader("", "", "", "", "", "clear", "", "enter amount");
                     this.booth_main_screen_btn_loader(false, false, false, false, false, true, false, true);
                     this.booth_main_screen.optional_console.Text = "please enter reviver account number";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_1:
@@ -297,6 +361,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.IsEnabled = false;
                     this.booth_main_screen.main_console.Text = "2000";
                     this.booth_main_screen.optional_console.Text = "do you want to withdraw 2000 tk.";
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -310,16 +375,17 @@ namespace BankManagementUser
             {
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_11_1:
                     try
                     {
                         Double tempBalance = Convert.ToDouble((this.booth_main_screen.main_console.Text));
-                        if (tempUser.withdraw(tempUser.UserName, tempBalance + 3.29))
+                        if (BankManagementUserSrc.withdraw(BankManagementUserSrc.UserName, tempBalance + 3.29))
                         {
                             this.booth_main_screen.optional_console.Text = "";
-                            MessageBox.Show("your current balance is: " + this.tempUser.Balance, "withdrawal successful!");
+                            MessageBox.Show("your current balance is: " + BankManagementUserSrc.Balance, "withdrawal successful!");
                         }
                         else
                         {
@@ -335,21 +401,23 @@ namespace BankManagementUser
                     finally
                     {
                         this.booth_main_screen.main_console.Clear();
+                        this.databaseOflineMode();
                     }
+
                     break;
 
                 case ButtonStatus.btn_31_1:
                     this.booth_main_screen_default_Loader();
-                    if (this.tempUser.withdraw(this.tempUser.UserName, 3.29))
+                    if (BankManagementUserSrc.withdraw(BankManagementUserSrc.UserName, 3.29))
                     {
-                        MessageBox.Show("your current balance is : " + Convert.ToString(this.tempUser.Balance), "balance status");
+                        MessageBox.Show("your current balance is : " + Convert.ToString(BankManagementUserSrc.Balance), "balance status");
                         this.booth_main_screen.optional_console.Text = "please chose another option.";
                     }
                     else
                     {
                         this.booth_main_screen.optional_console.Text = "request cannot be completed due to low balance.";
                     }
-
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_51_1:
@@ -360,6 +428,7 @@ namespace BankManagementUser
                     this.booth_main_screen_lbl_loader("", "", "", "", "", "clear", "", "enter amount");
                     this.booth_main_screen_btn_loader(false, false, false, false, false, true, false, true);
                     this.booth_main_screen.optional_console.Text = "please try again";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_2:
@@ -368,11 +437,11 @@ namespace BankManagementUser
                     {
                         Double tempBalance = Convert.ToDouble((this.booth_main_screen.main_console.Text));
                         this.booth_main_screen_default_Loader();
-                        if (tempUser.withdraw(tempUser.UserName, tempBalance + 3.29))
+                        if (BankManagementUserSrc.withdraw(BankManagementUserSrc.UserName, tempBalance + 3.29))
                         {
                             this.booth_main_screen.optional_console.Text = "";
 
-                            MessageBox.Show("your current balance is: " + this.tempUser.Balance, "withdrawal successful!");
+                            MessageBox.Show("your current balance is: " + BankManagementUserSrc.Balance, "withdrawal successful!");
                         }
                         else
                         {
@@ -385,7 +454,10 @@ namespace BankManagementUser
                         this.buttonStatus = ButtonStatus.btn_11_1;
                         this.booth_main_screen.main_console.Clear();
                     }
-
+                    finally
+                    {
+                        this.databaseOflineMode();
+                    }
                     break;
 
                 default:
@@ -399,6 +471,7 @@ namespace BankManagementUser
             {
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_17_1:
@@ -408,6 +481,7 @@ namespace BankManagementUser
                     this.booth_main_screen.main_console.IsEnabled = false;
                     this.booth_main_screen.main_console.Text = "5000";
                     this.booth_main_screen.optional_console.Text = "do you want to withdraw 5000 tk.";
+                    this.databaseOflineMode();
                     break;
 
                 default:
@@ -421,6 +495,7 @@ namespace BankManagementUser
             {
                 case ButtonStatus.NOT_DEFINED:
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_11_1:
@@ -428,9 +503,9 @@ namespace BankManagementUser
                     {
                         Double tempBalance = Convert.ToDouble((this.booth_main_screen.main_console.Text));
 
-                        if (tempUser.withdraw(tempUser.UserName, tempBalance))
+                        if (BankManagementUserSrc.withdraw(BankManagementUserSrc.UserName, tempBalance))
                         {
-                            this.booth_main_screen.optional_console.Text = "withdrawal successful! your current balance is: " + this.tempUser.Balance;
+                            this.booth_main_screen.optional_console.Text = "withdrawal successful! your current balance is: " + BankManagementUserSrc.Balance;
                         }
                         else
                         {
@@ -446,12 +521,14 @@ namespace BankManagementUser
                     finally
                     {
                         this.booth_main_screen.main_console.Clear();
+                        this.databaseOflineMode();
                     }
                     break;
 
                 case ButtonStatus.btn_31_1:
                     this.booth_main_screen_default_Loader();
                     this.booth_main_screen.optional_console.Text = "system is not integrated";
+                    this.databaseOflineMode();
                     break;
 
                 case ButtonStatus.btn_51_1:
@@ -475,6 +552,7 @@ namespace BankManagementUser
                     finally
                     {
                         this.booth_main_screen.main_console.Clear();
+                        this.databaseOflineMode();
                     }
                     break;
 
@@ -484,9 +562,9 @@ namespace BankManagementUser
                         Double tempBalance = Convert.ToDouble((this.booth_main_screen.main_console.Text));
                         int tempReciver = Convert.ToInt32(this.reciver);
                         this.booth_main_screen_default_Loader();
-                        if (tempUser.transfer(tempUser.UserName, tempReciver, tempBalance))
+                        if (BankManagementUserSrc.transfer(BankManagementUserSrc.UserName, tempReciver, tempBalance))
                         {
-                            this.booth_main_screen.optional_console.Text = "transfer successful! your current balance is: " + this.tempUser.Balance;
+                            this.booth_main_screen.optional_console.Text = "transfer successful! your current balance is: " + BankManagementUserSrc.Balance;
                         }
                         else
                         {
@@ -504,6 +582,7 @@ namespace BankManagementUser
                     {
                         this.booth_main_screen.main_console.Clear();
                         this.reciver = -1;
+                        this.databaseOflineMode();
                     }
                     break;
 
@@ -512,9 +591,9 @@ namespace BankManagementUser
                     {
                         Double tempBalance = Convert.ToDouble((this.booth_main_screen.main_console.Text));
                         this.booth_main_screen_default_Loader();
-                        if (tempUser.withdraw(tempUser.UserName, tempBalance))
+                        if (BankManagementUserSrc.withdraw(BankManagementUserSrc.UserName, tempBalance))
                         {
-                            this.booth_main_screen.optional_console.Text = "withdrawal successful! your current balance is: " + this.tempUser.Balance;
+                            this.booth_main_screen.optional_console.Text = "withdrawal successful! your current balance is: " + BankManagementUserSrc.Balance;
                         }
                         else
                         {
@@ -526,6 +605,10 @@ namespace BankManagementUser
                         this.booth_main_screen.optional_console.Text = "please enter a valid amount.";
                         this.buttonStatus = ButtonStatus.btn_11_1;
                         this.booth_main_screen.main_console.Clear();
+                    }
+                    finally
+                    {
+                        this.databaseOflineMode();
                     }
                     break;
 
