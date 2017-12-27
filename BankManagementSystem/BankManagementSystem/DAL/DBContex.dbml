@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="BankManagementSystem" Class="DBContexDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-4SMS22N\SQLEXPRESS;Initial Catalog=BankManagementSystem;Integrated Security=True" SettingsObjectName="BankManagementSystem.Properties.Settings" SettingsPropertyName="BankManagementSystemConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.stuff" Member="stuffs">
+    <Type Name="stuff">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="salary" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="rank" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="stuff_transaction" Member="transactions" ThisKey="id" OtherKey="stuffid" Type="transaction" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[transaction]" Member="transactions">
+    <Type Name="transaction">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="useid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="stuffid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="amount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Association Name="stuff_transaction" Member="stuff" ThisKey="stuffid" OtherKey="id" Type="stuff" IsForeignKey="true" />
+      <Association Name="user_transaction" Member="user" ThisKey="useid" OtherKey="id" Type="user" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[user]" Member="users">
+    <Type Name="user">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="middlename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="presentaddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="permanentaddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="postalcode" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contactnumber" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nomineename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="nationality" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="amount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="gender" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="user_transaction" Member="transactions" ThisKey="id" OtherKey="useid" Type="transaction" />
+    </Type>
+  </Table>
+</Database>

@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4B237152-57E9-4C9A-8987-78A592CC1CFB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>BankManagementSystem</RootNamespace>
+    <AssemblyName>BankManagementSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=3.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=1.6.0.184, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.1.6.0-alpha0184\lib\net45\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Design, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="MetroFramework.Fonts, Version=1.4.0.0, Culture=neutral, PublicKeyToken=5f91a84759bf584a, processorArchitecture=MSIL">
+      <HintPath>..\packages\MetroModernUI.1.4.0.0\lib\net\MetroFramework.Fonts.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.3.0.2.4\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\dbHandler.cs" />
+    <Compile Include="DAL\DBContex.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DBContex.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\AddStuff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\AddStuff.Designer.cs">
+      <DependentUpon>AddStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\AddUserPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\AddUserPanel.Designer.cs">
+      <DependentUpon>AddUserPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\CashierPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\CashierPanel.Designer.cs">
+      <DependentUpon>CashierPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\DepositPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\DepositPanel.Designer.cs">
+      <DependentUpon>DepositPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\LoginPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\LoginPanel.Designer.cs">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\ManagerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\ManagerPanel.Designer.cs">
+      <DependentUpon>ManagerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\RemoveStaff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\RemoveStaff.Designer.cs">
+      <DependentUpon>RemoveStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\RemoveUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\RemoveUser.Designer.cs">
+      <DependentUpon>RemoveUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\SecondOfficerPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\SecondOfficerPanel.Designer.cs">
+      <DependentUpon>SecondOfficerPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\ViewAllStuff.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\ViewAllStuff.Designer.cs">
+      <DependentUpon>ViewAllStuff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\ViewAllUser.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\ViewAllUser.Designer.cs">
+      <DependentUpon>ViewAllUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DLL\WithdrawPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DLL\WithdrawPanel.Designer.cs">
+      <DependentUpon>WithdrawPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DLL\AddStuff.resx">
+      <DependentUpon>AddStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\AddUserPanel.resx">
+      <DependentUpon>AddUserPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\CashierPanel.resx">
+      <DependentUpon>CashierPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\DepositPanel.resx">
+      <DependentUpon>DepositPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\LoginPanel.resx">
+      <DependentUpon>LoginPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\ManagerPanel.resx">
+      <DependentUpon>ManagerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\RemoveStaff.resx">
+      <DependentUpon>RemoveStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\RemoveUser.resx">
+      <DependentUpon>RemoveUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\SecondOfficerPanel.resx">
+      <DependentUpon>SecondOfficerPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\ViewAllStuff.resx">
+      <DependentUpon>ViewAllStuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\ViewAllUser.resx">
+      <DependentUpon>ViewAllUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DLL\WithdrawPanel.resx">
+      <DependentUpon>WithdrawPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="DAL\DBContex.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DBContex.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DAL\DBContex.dbml.layout">
+      <DependentUpon>DBContex.dbml</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\BankManagementSystem.DAL.stuff.datasource" />
+    <None Include="Properties\DataSources\BankManagementSystem.DAL.user.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
